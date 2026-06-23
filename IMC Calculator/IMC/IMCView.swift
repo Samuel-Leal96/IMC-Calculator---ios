@@ -70,7 +70,7 @@ struct ToggleButton:View {
 struct InformationText: View {
     let text: String
     var body: some View {
-        Text(text).font(.largeTitle).bold().foregroundColor(.white)
+        Text(text).font(.title).bold().foregroundColor(.white)
     }
 }
 
