@@ -30,7 +30,7 @@ struct IMCView: View {
                 CounterButton(titleText: "Edad", counterNumber: $age)
                 CounterButton(titleText: "Peso", counterNumber: $weight)
             }
-            IMCCalculateButton()
+            IMCCalculateButton(userWeight: Double(weight), userHeight: height)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.backgroundApp)
@@ -45,9 +45,12 @@ struct IMCView: View {
 }
 
 struct IMCCalculateButton: View {
+    let userWeight: Double
+    let userHeight: Double
+    
     var body: some View {
         NavigationStack{
-            NavigationLink(destination: {}){
+            NavigationLink(destination: {IMCResult(userWeight: userWeight, userHeight: userHeight)}){
                 Text("Calcular").font(.title).bold().foregroundColor(.purple).frame(maxWidth: .infinity, maxHeight: 100).background(.backgroundComponent)
             }
         }
