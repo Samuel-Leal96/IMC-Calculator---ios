@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct SuperheroSearcher: View {
+    
+    @State var superheroName:String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            TextField("", text: $superheroName, prompt: Text("Ingresar super héroe...").font(.title2).bold().foregroundStyle(.gray))
+                .font(.title2)
+                .bold()
+                .foregroundColor(.white)
+                .padding(16)
+                .border(.purple, width: 2)
+                .padding(8)
+                .autocorrectionDisabled()
+                .onSubmit {
+                    print(superheroName)
+                }
+            Spacer()
+        }.frame(maxWidth: .infinity, maxHeight: .infinity).background(.backgroundApp)
     }
 }
 
