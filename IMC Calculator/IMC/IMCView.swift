@@ -30,6 +30,7 @@ struct IMCView: View {
                 CounterButton(titleText: "Edad", counterNumber: $age)
                 CounterButton(titleText: "Peso", counterNumber: $weight)
             }
+            IMCCalculateButton()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.backgroundApp)
@@ -40,6 +41,16 @@ struct IMCView: View {
         }
         //        .navigationBarBackButtonHidden()
         //        .navigationTitle("IMC Calculator")
+    }
+}
+
+struct IMCCalculateButton: View {
+    var body: some View {
+        NavigationStack{
+            NavigationLink(destination: {}){
+                Text("Calcular").font(.title).bold().foregroundColor(.purple).frame(maxWidth: .infinity, maxHeight: 100).background(.backgroundComponent)
+            }
+        }
     }
 }
 
