@@ -15,6 +15,7 @@ struct IMCView: View {
 //    }
     
     @State var gender: Int = 0
+    @State var height: Double = 150
     
     var body: some View {
         VStack{
@@ -22,6 +23,7 @@ struct IMCView: View {
                 ToggleButton(text: "Samuel", imageName: "figure.stand", gender: 0, selectedGender: $gender)
                 ToggleButton(text: "Samuel", imageName: "figure.stand.dress", gender: 1, selectedGender: $gender)
             }
+            HeightCalculator(selectedHeight: $height)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.backgroundApp)
@@ -71,6 +73,26 @@ struct InformationText: View {
     let text: String
     var body: some View {
         Text(text).font(.title).bold().foregroundColor(.white)
+    }
+}
+
+struct TitleText: View {
+    let text: String
+    
+    var body: some View {
+        Text(text).font(.title2).foregroundColor(.gray)
+    }
+}
+
+struct HeightCalculator:View {
+    @Binding var selectedHeight: Double
+    
+    var body: some View {
+        VStack{
+            TitleText(text: "Altura")
+            InformationText(text: "\(Int(selectedHeight)) cm")
+            Slider(value: $selectedHeight, in:100...220, step: 1).accentColor(.purple).padding(.horizontal, 10)
+        }.frame(maxWidth: .infinity, maxHeight: .infinity).background(.backgroundComponent)
     }
 }
 
