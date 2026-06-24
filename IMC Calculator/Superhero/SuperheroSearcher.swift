@@ -13,6 +13,7 @@ struct SuperheroSearcher: View {
     
     var body: some View {
         VStack{
+            
             TextField("", text: $superheroName, prompt: Text("Ingresar super héroe...").font(.title2).bold().foregroundStyle(.gray))
                 .font(.title2)
                 .bold()
@@ -23,6 +24,18 @@ struct SuperheroSearcher: View {
                 .autocorrectionDisabled()
                 .onSubmit {
                     print(superheroName)
+                    Task{
+                        
+                        do{
+                            let response = try await ApiNetwork().getHeroesByQuery(query: superheroName)
+
+                            print(response)
+                            
+                        }catch{
+                           print("Error")
+                        }
+                        
+                    }
                 }
             Spacer()
         }.frame(maxWidth: .infinity, maxHeight: .infinity).background(.backgroundApp)
